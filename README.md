@@ -20,9 +20,9 @@ node-gyp rebuild
 grunt
 ```
 
-The order of last two commands matters (!) - at least in default Grunt config.
+The order of last two commands matters (!) - at least with the default Grunt config file.
 
-### To run the test: 
+### To run the test:
 
 ```sh
 node .

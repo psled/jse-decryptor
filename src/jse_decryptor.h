@@ -12,7 +12,7 @@ class JSEDecryptor : public node::ObjectWrap {
   explicit JSEDecryptor(v8::Handle<v8::String> key = v8::Undefined());
   ~JSEDecryptor();
 
-  static v8::Handle<v8::Value> New(const v8::Arguments& args);  
+  static v8::Handle<v8::Value> New(const v8::Arguments& args);
   static v8::Handle<v8::Value> Decrypt(const v8::Arguments& args);
   static v8::Persistent<v8::Function> constructor;
 

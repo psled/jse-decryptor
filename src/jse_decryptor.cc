@@ -30,7 +30,7 @@ Handle<Value> JSEDecryptor::New(const Arguments& args) {
   HandleScope scope;
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`    
+    // Invoked as constructor: `new MyObject(...)`
     Handle<String> key = String::New(decryption_key);
     JSEDecryptor* obj = new JSEDecryptor(key);
     obj->Wrap(args.This());
@@ -43,22 +43,22 @@ Handle<Value> JSEDecryptor::New(const Arguments& args) {
   }
 }
 
-Handle<Value> JSEDecryptor::Decrypt(const Arguments& args) {  
+Handle<Value> JSEDecryptor::Decrypt(const Arguments& args) {
   HandleScope scope;
 
   Local<Object> module = args[0]->ToObject();
 
-  Local<Context> context = Context::GetCurrent(); 
+  Local<Context> context = Context::GetCurrent();
   Local<String> script_source = String::New(
-    "(function (module, cryptKey) {"            
+    "(function (module, cryptKey) {"
     "  var require = module.require;"
 
     "  var fs = require('fs');"
-    "  var encryptedDataBuf = fs.readFileSync(module.filename);"    
-    "  var encryptedData = encryptedDataBuf.toString();"    
+    "  var encryptedDataBuf = fs.readFileSync(module.filename);"
+    "  var encryptedData = encryptedDataBuf.toString();"
 
     "  var crypto = require('crypto');"
-    "  var decipher = crypto.createDecipher('aes-256-cbc', cryptKey);"  
+    "  var decipher = crypto.createDecipher('aes-256-cbc', cryptKey);"
     "  var decoded = decipher.update(encryptedData, 'base64', 'utf8');"
     "  decoded += decipher.final('utf8');"
 
@@ -68,16 +68,16 @@ Handle<Value> JSEDecryptor::Decrypt(const Arguments& args) {
     "  m.filename = module.filename;"
     "  m.parent = module.parent;"
     "  m._compile(decoded);"
-    "  return m.exports;"    
-    "})"    
-  ); 
-  Local<Script> script = Script::New(script_source); 
-  Local<Value> value = script->Run(); 
-  
-  Local<Function> fn = value.As<Function>(); 
+    "  return m.exports;"
+    "})"
+  );
+  Local<Script> script = Script::New(script_source);
+  Local<Value> value = script->Run();
+
+  Local<Function> fn = value.As<Function>();
   const int fn_argc = 2;
   Handle<Value> fn_argv[] = {
-    module,  
+    module,
     String::New(decryption_key)
   };
   Local<Value> decrypted_mod = fn->Call(context->Global(), fn_argc, fn_argv);

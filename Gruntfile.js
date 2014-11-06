@@ -13,8 +13,8 @@ module.exports = function (grunt) {
         ext: 'jse',
         dest: './build/'
       },
-      files: ['./lib/**/*.js']      
-    }    
+      files: ['./lib/**/*.js']
+    }
   });
 
   grunt.loadNpmTasks('grunt-encrypt');

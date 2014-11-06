@@ -10,7 +10,7 @@ var jseDecryptor = new addon.JSEDecryptor();
 
 // register '.jse' extension
 require.extensions[".jse"] = function (m) {
-  m.exports = jseDecryptor.decrypt(m);   
+  m.exports = jseDecryptor.decrypt(m);
 };
 
 // load encrypted module
