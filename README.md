@@ -9,17 +9,21 @@ However, be aware that this is rather an unfinished proof of concept and securit
 
 ### Requirements:
 
-  * node-gyp
-  * grunt-cli
+    * node-gyp
+    * grunt-cli
 
 ### To build:
-  
-  * npm update
-  * node-gyp rebuild
-  * grunt
+
+```sh
+npm update
+node-gyp rebuild
+grunt
+```
 
 The order of last two commands matters (!) - at least in default Grunt config.
 
 ### To run the test: 
 
-  * node .
+```sh
+node .
+```
