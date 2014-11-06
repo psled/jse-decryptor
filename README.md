@@ -3,7 +3,7 @@ Code protection for Node.js
 
 ### Why:
 
-Because releasing a JavaScript source code as a plain text is not always the best idea. Inspiration taken from a [stackoveflow answer](http://stackoverflow.com/questions/5951302/node-js-code-protection).
+Because releasing a JavaScript source code as a plain text is not always the best idea. Inspiration taken from a [stackoverflow answer](http://stackoverflow.com/questions/5951302/node-js-code-protection).
 
 However, be aware that this is rather an unfinished proof of concept and security mockup than a real protection mechanism. If anybody really wants to discover your JavaScript source code he or she will easily do this, no matter how much effort you put into protecting it.
 
